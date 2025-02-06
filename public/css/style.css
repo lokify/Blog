@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Trajan+Pro:wght@400;700&display=swap");
 
 :root {
   --black: #1c1c1c;
   --gray: #7e7e7e;
   --gray-light: #e4e4e4;
   --red: #b30000;
+  --gold: #b88d4b;
   --font-size-base: 1rem;
   --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
   --font-size-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
@@ -13,23 +14,36 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "MedievalSharp", serif;
   color: var(--black);
   font-size: var(--font-size-base);
-  background-color: #faf5ee;
-  background-image: url("/img/img-noise-361x370.png");
+  background-color: #1a1a1a;
+  background-image: url("/img/got.png");
+  background-size: cover;
+  background-position: center;
   margin: 0;
 }
 
 a {
-  color: var(--black);
+  color: var(--gold);
+  text-decoration: none;
 }
+
+h1,
+h2,
+h3 {
+  font-family: "MedievalSharp", serif;
+  color: black;
+}
+
 h1 {
   font-size: var(--font-size-xl);
 }
+
 h2 {
   font-size: var(--font-size-lg);
 }
+
 h3 {
   font-size: var(--font-size-md);
 }
@@ -40,33 +54,55 @@ input[type="password"],
 input[type="search"],
 select,
 textarea {
-  font-family: "Poppins", sans-serif;
+  font-family: "Trajan Pro", serif;
   font-size: 1rem;
   display: block;
   box-sizing: border-box;
   width: 100%;
   padding: 0.7rem 0.75rem;
   margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  border-radius: var(--border-radius);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--red);
 }
 
 .btn {
   background-color: var(--black);
   border: none;
-  color: white;
+  color: var(--gold);
   padding: 16px 32px;
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  font-weight: 700;
+  border-radius: var(--border-radius);
+}
+
+.btn:hover {
+  background-color: var(--red);
 }
 
 .btn-delete {
   padding: 10px 16px;
   background-color: var(--red);
+  color: var(--gold);
 }
 
 img {
   width: 100%;
   height: auto;
+  border-radius: var(--border-radius);
 }
 
 /* Layout */
@@ -88,15 +124,13 @@ img {
   border-radius: var(--border-radius);
 }
 
-/* Main Header */
+/* Header */
 .header {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  grid-template-areas:
-    "logo button"
-    "menu menu";
+  grid-template-areas: "logo button" "menu menu";
   padding-top: 10px;
 }
 
@@ -108,10 +142,12 @@ img {
 }
 
 .header_logo {
-  font-weight: 800;
-  font-size: 25px;
+  font-family: "MedievalSharp", serif; /* Apply the Cinzel font */
+  font-weight: 700; /* Bold weight to give it prominence */
+  font-size: 30px; /* Adjust the size to make it stand out */
   text-decoration: none;
   grid-area: logo;
+  color: rgb(43, 43, 20); /* Retain the color */
 }
 
 .header_logo:hover {
@@ -136,7 +172,7 @@ img {
   grid-area: button;
 }
 
-.header_button button {
+.header__button button {
   display: flex;
   gap: 0.3rem;
   align-items: center;
@@ -147,11 +183,11 @@ img {
   border: 2px solid transparent;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--black);
+  color: black;
 }
 
 .header_button button:hover {
-  border: 2px solid var(--black);
+  border: 2px solid var(--gold);
 }
 
 /* Header -> Navigation */
@@ -161,19 +197,72 @@ img {
   gap: 1rem;
   font-weight: 600;
   padding: 0;
+  font-style: "MedievalSharp";
+}
+/* Style the links */
+.header_nav_link {
+  font-family: "MedievalSharp", cursive;
+  color: #fff; /* Change to your preferred color */
+  text-decoration: none;
+  padding: 10px;
+}
+
+/* Add hover effect */
+.header_nav_link:hover {
+  color: #ffd700; /* Change to your preferred hover color */
+}
+
+/* Style for active link */
+.header_nav_link.active {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+/* Optional: Style the list items */
+.header_nav_item {
+  display: inline-block;
+  margin: 0 15px;
 }
 
 .header_nav ul a {
   padding: 10px;
   text-decoration: none;
+  color: rgb(117, 99, 5);
+  font-size: larger;
+  font-style: "MedievalSharp";
+}
+/* Style for header navigation links */
+.header_nav_list {
+  display: flex;
+  gap: 15px;
+}
+
+.header_nav_link {
+  padding: 10px 15px;
+  font-family: "MedievalSharp", cursive;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #333;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.header_nav_link:hover {
+  background-color: black; /* Hover background color */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.header_nav_link.active {
+  background-color: #b99d15; /* Active link background */
 }
 
 .header_nav ul a.active {
-  color: #7e7e7e;
+  color: var(--gray);
 }
 
 .header_nav ul a:hover {
   text-decoration: underline;
+  color: rgb(81, 69, 4);
 }
 
 /* Author - HomePage */
@@ -182,22 +271,41 @@ img {
   text-align: center;
 }
 
-.author_heading {
+.author__heading {
   margin-top: 10px;
   margin-bottom: 5px;
+  font-size: var(--font-size-xl);
+  color: var(--gold);
+  font-family: "MedievalSharp", serif;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
+  background: linear-gradient(to right, #4a0f0f, #6a2b17);
+  padding: 15px 25px;
+  border: 3px solid #7a3e00;
+  border-radius: var(--border-radius);
+  display: inline-block;
 }
 
-.author_body {
+.author__body {
   font-size: var(--font-size-md);
   margin: 5px 0 40px 0;
+  color: #e1d3b5;
+  font-style: italic;
+  letter-spacing: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.85),
+    rgba(102, 51, 0, 0.75)
+  );
+  padding: 10px;
+  border: 2px solid #7e3f00;
+  border-radius: var(--border-radius);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  display: inline-block;
 }
 
-/* Home Article List */
-.articles_heading {
-  margin-top: 4rem;
-  font-weight: 400;
-}
-
+/* Home Article List Enhancements */
 .article-ul {
   list-style-type: none;
   padding: 0;
@@ -207,20 +315,36 @@ img {
   flex-direction: column;
 }
 
-.article-list__date {
-  font-size: 1rem;
-  color: var(--gray);
-  width: 100px;
-  display: inline-block;
-  width: 260px;
+.article-ul li {
+  background: rgba(17, 10, 0, 0.7); /* Golden semi-transparent background */
+  color: var(--gold); /* Gold color for article titles */
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease-in-out;
+}
+
+.article-ul li:hover {
+  background: rgba(17, 10, 0, 1); /* Brighter gold on hover */
+  transform: scale(1.02);
 }
 
 .article-ul li a {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  color: var(--gold); /* Gold-colored links */
   text-decoration: none;
-  margin: 18px 0;
+}
+
+.article-ul li a:hover {
+  color: var(--red); /* Red color for hover */
+}
+
+.article-list__date {
+  color: #dcdcdc; /* Softer white shade for dates */
+  font-size: 1rem;
+  width: 260px;
+  text-align: right;
 }
 
 @media only screen and (min-width: 768px) {
@@ -234,36 +358,12 @@ img {
   }
 }
 
-.article-ul li {
-  font-size: 24px;
-  cursor: pointer;
-  transition: filter 0.1s;
-}
-
-.article-ul li:not(:last-child) {
-  border-bottom: 1px solid var(--gray-light);
-}
-
-.article-ul li:hover {
-  filter: none;
-}
-
-.article-ul:hover li {
-  filter: blur(3px);
-}
-
-.article-ul:hover li:hover {
-  filter: none;
-}
-
-.article {
-  white-space: pre-wrap;
-}
-
 /* Footer */
 .footer {
   margin: 4rem;
+  color: black;
   text-align: center;
+  font-size: var(--font-size-md);
 }
 
 /* Dashboard Admin */
@@ -324,18 +424,203 @@ img {
   position: absolute;
   top: 0;
   right: 0;
-  color: var(--gray-light);
+  color: var(--gold);
   padding: 15px;
 }
 
 .pagination {
   font-size: 1.3rem;
-  color: var(--gray);
+  color: var(--gold);
   text-decoration: none;
   margin-top: 40px;
   display: inline-block;
 }
 
 .pagination:hover {
-  color: var(--black);
+  color: var(--red);
+}
+
+.white {
+  color: whitesmoke;
+}
+
+.about-section {
+  padding: 40px;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Dark semi-transparent background for contrast */
+  border-radius: 10px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.about-section h1,
+.about-section h2,
+.about-section p,
+.about-section li {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Subtle text shadow for clarity */
+  line-height: 1.6;
+}
+
+.about-section strong {
+  color: #ac9408; /* Highlight key text with golden color */
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+
+  border: 2px solid #8b7355;
+  color: #d4af37;
+  font-family: "MedievalSharp", cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.searchBtn svg {
+  fill: #d4af37;
+  transition: fill 0.3s ease;
+}
+
+.searchBtn:hover {
+  background: #8b7355;
+  color: #fff;
+}
+
+.searchBtn:hover svg {
+  fill: #fff;
+}
+
+.admin-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+}
+
+.admin-title h2 {
+  color: black;
+  font-size: 2rem;
+}
+
+.admin-title .button {
+  color: rgba(17, 10, 0, 1); /* Dark contrasting color */
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: background 0.2s ease-in-out;
+}
+
+.admin-title .button:hover {
+  background: var(--red);
+  color: white;
+}
+
+.admin-posts {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-posts li {
+  background: rgba(17, 10, 0, 0.7);
+  color: var(--gold);
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-posts li:hover {
+  background: rgba(17, 10, 0, 1);
+  transform: scale(1.02);
+}
+
+.admin-posts li a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.admin-posts li a:hover {
+  color: var(--red);
+}
+
+.admin-post-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-post-controls .btn {
+  background: var(--gold);
+  color: rgba(17, 10, 0, 1);
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.admin-post-controls .btn:hover {
+  background: var(--red);
+  color: white;
+}
+
+.admin-post-controls form {
+  margin: 0;
+}
+
+.post-section {
+  padding: 40px;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Dark semi-transparent background for contrast */
+  border-radius: 10px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.post-title {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Subtle text shadow for clarity */
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.post-body {
+  color: #dcdcdc; /* Softer white color for readability */
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.7); /* Background for the article */
+  border-radius: 10px;
+}
+
+.post-body strong {
+  color: #ac9408; /* Highlight key text with golden color */
 }

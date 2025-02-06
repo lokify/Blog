@@ -1,15 +1,28 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap"
+  rel="stylesheet"
+/>
+
 <header class="header">
-  <a href="/" class="header_logo">NodeJs</a>
+  <a href="/" class="header_logo">Game of Thrones</a>
   <nav class="header_nav">
     <ul class="header_nav_list">
       <li class="header_nav item">
-        <a href="/" class="header_nav_link">Home</a>
+        <a href="/" class="<%= isActiveRoute('/', currentRoute) %>">Home</a>
       </li>
       <li class="header_nav item">
-        <a href="/about" class="header_nav_link">About</a>
+        <a
+          href="/about"
+          class="header_nav_link <%= isActiveRoute('/about',currentRoute) %>"
+          >About</a
+        >
       </li>
       <li class="header_nav item">
-        <a href="/contact" class="header_nav_link">Contact</a>
+        <a
+          href="/contact"
+          class="header_nav_link <%= isActiveRoute('/contact',currentRoute) %>"
+          >Contact</a
+        >
       </li>
     </ul>
   </nav>
