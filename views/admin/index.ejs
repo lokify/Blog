@@ -16,14 +16,51 @@
 <br />
 <h3>Register</h3>
 
-<form action="/register" method="post">
+<form action="/register" method="post" id="register-form">
   <label for="username" style="color: white">
     <b>Username</b>
   </label>
   <input type="text" placeholder="Enter username" name="username" />
-  <label for="password" style="color: white">
+  <label for="password" class="white">
     <b>Password</b>
   </label>
   <input type="password" placeholder="Enter password" name="password" />
   <input type="submit" value="Register" class="btn" />
 </form>
+
+<script>
+  const form = document.getElementById("register-form");
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const username = formData.get("username");
+    const password = formData.get("password");
+
+    try {
+      const response = await fetch("/register", {
+        method: "POST",
+        body: JSON.stringify({ username, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Show the success message (Pop-up)
+        alert("User registered successfully!");
+
+        // Redirect to the admin page
+        window.location.href = "/admin"; // Change '/admin' to your actual admin page URL
+      } else {
+        // Handle error case (User already in use or other errors)
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while registering the user.");
+    }
+  });
+</script>
